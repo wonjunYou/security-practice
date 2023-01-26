@@ -17,10 +17,10 @@ public class PrincipleDetailsService implements UserDetailsService {
     @Autowired
     private UserRepository userRepository;
 
-
     // 시큐리티 session = Authentication = UserDetails
     // 리턴된 값은 Authentication 내부에 쏙 들어가고, Authentication 오브젝트가 시큐리티 session에 담기도록 아래 메소드가 일괄처리함.
     // 시큐리티 session(내부 Authentication(내부 UserDetails))
+    // 함수 종료시 @AuthenticationPrincipal 어노테이션이 만들어진다.
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User userEntity = userRepository.findByUsername(username);
